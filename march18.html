@@ -7,248 +7,176 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream:    #f5f0e8;
-    --parchment:#ede5d0;
-    --sand:     #d9c9a8;
-    --terra:    #c1643c;
-    --terra-dk: #a04e2a;
-    --terra-lt: #e8856a;
-    --soil:     #5c3d2e;
-    --soil-lt:  #7a5545;
-    --sienna:   #8b4513;
-    --moss:     #6b7c4b;
-    --rust:     #b5451b;
-    --text:     #2e1f14;
-    --muted:    #8a7060;
-    --border:   #c9b99a;
-    --card-bg:  #faf6ef;
+    --cream:     #f5f0e8;
+    --parchment: #ede5d0;
+    --sand:      #d9c9a8;
+    --terra:     #c1643c;
+    --terra-dk:  #a04e2a;
+    --soil:      #5c3d2e;
+    --soil-lt:   #7a5545;
+    --sienna:    #8b4513;
+    --moss:      #6b7c4b;
+    --muted:     #8a7060;
+    --border:    #c9b99a;
+    --card-bg:   #faf6ef;
+    --teal:      #1a9e96;
+    --teal-dk:   #147a73;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     background: var(--cream);
     background-image:
-      radial-gradient(ellipse at 20% 0%, rgba(193,100,60,0.08) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 100%, rgba(92,61,46,0.07) 0%, transparent 50%);
-    color: var(--text);
+      radial-gradient(ellipse at 18% 0%, rgba(193,100,60,0.09) 0%, transparent 50%),
+      radial-gradient(ellipse at 82% 100%, rgba(92,61,46,0.07) 0%, transparent 50%);
+    color: var(--soil);
     font-family: 'Instrument Sans', sans-serif;
     min-height: 100vh;
   }
   .page { max-width: 1380px; margin: 0 auto; padding: 0 28px 80px; }
 
+  /* ── HEADER ── */
   header {
-    padding: 52px 0 40px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: end;
-    gap: 24px;
-    border-bottom: 2px solid var(--terra);
-    margin-bottom: 40px;
-    position: relative;
+    padding: 52px 0 38px;
+    display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 24px;
+    border-bottom: 2px solid var(--terra); margin-bottom: 38px; position: relative;
   }
   header::before {
-    content: 'INDIA · STARTUP · ECOSYSTEM';
+    content: 'INDIA · STARTUP · ECOSYSTEM · MARCH 2026';
     position: absolute; top: 20px; left: 0;
-    font-size: 10px; letter-spacing: 0.3em; color: var(--terra); font-weight: 600;
+    font-size: 10px; letter-spacing: 0.28em; color: var(--terra); font-weight: 600;
   }
   h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(36px, 6vw, 72px);
-    font-weight: 900; line-height: 0.95; color: var(--soil); letter-spacing: -0.02em;
+    font-size: clamp(34px, 5.5vw, 68px); font-weight: 900;
+    line-height: 0.95; color: var(--soil); letter-spacing: -0.02em;
   }
   h1 em { font-style: italic; color: var(--terra); }
-  .header-stats { display: flex; gap: 32px; padding-bottom: 6px; }
+  .hstats { display: flex; gap: 30px; padding-bottom: 4px; }
   .hstat { text-align: right; }
-  .hstat-val {
-    font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700;
-    color: var(--terra); line-height: 1;
-  }
-  .hstat-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
+  .hstat-v { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--terra); line-height: 1; }
+  .hstat-l { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
 
-  .toolbar { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 20px; }
-  .search-wrap { position: relative; flex: 1; min-width: 220px; max-width: 360px; }
-  .search-wrap svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 15px; height: 15px; color: var(--muted); }
-  .search-wrap input {
+  /* ── TOOLBAR ── */
+  .toolbar { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 18px; }
+  .sw { position: relative; flex: 1; min-width: 200px; max-width: 340px; }
+  .sw svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; color: var(--muted); }
+  .sw input {
     width: 100%; background: var(--parchment); border: 1.5px solid var(--border);
-    color: var(--text); font-family: 'Instrument Sans', sans-serif; font-size: 13px;
-    padding: 10px 14px 10px 36px; border-radius: 8px; outline: none; transition: border-color 0.15s;
+    color: var(--soil); font-family: 'Instrument Sans', sans-serif; font-size: 13px;
+    padding: 9px 13px 9px 34px; border-radius: 8px; outline: none; transition: border-color 0.15s;
   }
-  .search-wrap input::placeholder { color: var(--muted); }
-  .search-wrap input:focus { border-color: var(--terra); }
-  .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+  .sw input::placeholder { color: var(--muted); }
+  .sw input:focus { border-color: var(--terra); }
+  .pills { display: flex; gap: 7px; flex-wrap: wrap; }
   .pill {
     background: var(--parchment); border: 1.5px solid var(--border); color: var(--muted);
     font-family: 'Instrument Sans', sans-serif; font-size: 11px; font-weight: 600;
-    letter-spacing: 0.04em; padding: 6px 14px; border-radius: 100px; cursor: pointer;
-    transition: all 0.15s; white-space: nowrap;
+    letter-spacing: 0.04em; padding: 5px 13px; border-radius: 100px; cursor: pointer;
+    transition: all 0.14s; white-space: nowrap;
   }
   .pill:hover { border-color: var(--terra); color: var(--terra); }
-  .pill.active { background: var(--terra); border-color: var(--terra); color: #fff; }
-  .count-row { font-size: 12px; color: var(--muted); margin-bottom: 24px; letter-spacing: 0.04em; }
+  .pill.on { background: var(--terra); border-color: var(--terra); color: #fff; }
+
+  .count-row { font-size: 12px; color: var(--muted); margin-bottom: 22px; }
   .count-row b { color: var(--soil); }
 
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
+  /* ── GRID ── */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(348px, 1fr)); gap: 18px; }
 
+  /* ── CARD ── */
   .card {
     background: var(--card-bg); border: 1.5px solid var(--border); border-radius: 16px;
-    overflow: hidden; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
-    animation: rise 0.45s cubic-bezier(.22,.68,0,1.2) both; display: flex; flex-direction: column;
+    overflow: hidden; display: flex; flex-direction: column;
+    transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+    animation: rise 0.42s cubic-bezier(.22,.68,0,1.2) both;
   }
-  @keyframes rise { from { opacity:0; transform:translateY(20px) scale(0.97); } to { opacity:1; transform:none; } }
-  .card:hover {
-    box-shadow: 0 8px 32px rgba(92,61,46,0.14), 0 2px 8px rgba(193,100,60,0.1);
-    transform: translateY(-4px); border-color: var(--terra);
+  @keyframes rise { from { opacity:0; transform:translateY(18px) scale(0.97); } to { opacity:1; transform:none; } }
+  .card:hover { box-shadow: 0 8px 30px rgba(92,61,46,0.13), 0 2px 6px rgba(193,100,60,0.09); transform: translateY(-4px); border-color: var(--terra); }
+
+  .stripe { height: 4px; }
+  .s-agri  { background: linear-gradient(90deg,#6b7c4b,#8ba060); }
+  .s-ai    { background: linear-gradient(90deg,#8b4513,#b5601e); }
+  .s-ecom  { background: linear-gradient(90deg,#c1643c,#d4845e); }
+  .s-fin   { background: linear-gradient(90deg,#4a7c59,#6a9e78); }
+  .s-ent   { background: linear-gradient(90deg,#7a5545,#9e7060); }
+  .s-edu   { background: linear-gradient(90deg,#b8860b,#d4a017); }
+  .s-food  { background: linear-gradient(90deg,#b5451b,#d46030); }
+  .s-clean { background: linear-gradient(90deg,#4a8c6f,#6aae90); }
+  .s-hw    { background: linear-gradient(90deg,#5c7a8c,#7a9eb0); }
+
+  .cbody { padding: 19px 21px 0; flex: 1; }
+  .ctop  { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+  .cname { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 700; color: var(--soil); line-height: 1.2; }
+  .chip  { background: var(--terra); color: #fff; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 100px; white-space: nowrap; flex-shrink: 0; }
+
+  .tags  { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+  .tag   { font-size: 10px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; }
+  .t-sec { background: rgba(139,69,19,0.10); color: var(--sienna); }
+  .t-stg { background: rgba(107,124,75,0.12); color: var(--moss); }
+  .t-mod { background: rgba(193,100,60,0.10); color: var(--terra-dk); }
+
+  .igrid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px 16px; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--parchment); }
+  .ik { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+  .iv { font-size: 12px; color: var(--soil); font-weight: 500; }
+  .inv-l { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .inv-v { font-size: 11px; color: var(--soil-lt); line-height: 1.5; margin-bottom: 14px; }
+
+  /* FOOTER */
+  .cfoot {
+    padding: 13px 21px 17px; display: flex; justify-content: space-between; align-items: center;
+    gap: 8px; background: var(--parchment); border-top: 1px solid var(--border); margin-top: auto;
   }
-  .card-stripe { height: 4px; width: 100%; }
-  .card-body { padding: 20px 22px 0; flex: 1; }
-  .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
-  .company-name { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--soil); line-height: 1.15; }
-  .amount-chip { background: var(--terra); color: #fff; font-size: 12px; font-weight: 600; padding: 4px 11px; border-radius: 100px; white-space: nowrap; flex-shrink: 0; }
-  .tags { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 16px; }
-  .tag { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border-radius: 4px; }
-  .tag-sector { background: rgba(139,69,19,0.1); color: var(--sienna); }
-  .tag-stage  { background: rgba(107,124,75,0.12); color: var(--moss); }
-  .tag-model  { background: rgba(193,100,60,0.1); color: var(--terra-dk); }
-  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 18px; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--parchment); }
-  .ig-key { font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
-  .ig-val { font-size: 12px; color: var(--soil); font-weight: 500; }
-  .investors-row { margin-bottom: 16px; }
-  .inv-label { font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
-  .inv-names { font-size: 11px; color: var(--soil-lt); line-height: 1.5; }
-  .card-footer {
-    padding: 14px 22px 18px; display: flex; justify-content: space-between; align-items: center;
-    gap: 10px; background: var(--parchment); border-top: 1px solid var(--border); margin-top: auto;
-  }
-  .date-badge { font-size: 10px; letter-spacing: 0.1em; color: var(--muted); }
-  .actions { display: flex; gap: 8px; }
-  .btn-info {
-    display: inline-flex; align-items: center; gap: 6px; background: var(--soil); color: var(--cream);
+  .date { font-size: 10px; letter-spacing: 0.08em; color: var(--muted); }
+  .btns { display: flex; gap: 7px; }
+
+  /* Google button */
+  .btn-g {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: var(--soil); color: var(--cream);
     font-family: 'Instrument Sans', sans-serif; font-size: 11px; font-weight: 600;
-    padding: 7px 13px; border-radius: 7px; border: none; cursor: pointer;
-    transition: background 0.15s, transform 0.1s;
+    padding: 7px 12px; border-radius: 7px; border: none; cursor: pointer;
+    text-decoration: none; transition: background 0.14s, transform 0.1s;
+    white-space: nowrap;
   }
-  .btn-info:hover { background: var(--terra-dk); transform: scale(1.03); }
-  .btn-info svg { width: 13px; height: 13px; }
-  .btn-perplexity {
-    display: inline-flex; align-items: center; gap: 6px; background: #20b2aa; color: #fff;
+  .btn-g:hover { background: var(--terra-dk); transform: scale(1.03); }
+  .btn-g svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+  /* Perplexity button */
+  .btn-p {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: var(--teal); color: #fff;
     font-family: 'Instrument Sans', sans-serif; font-size: 11px; font-weight: 600;
-    padding: 7px 13px; border-radius: 7px; border: none; cursor: pointer;
-    text-decoration: none; transition: background 0.15s, transform 0.1s;
+    padding: 7px 12px; border-radius: 7px; border: none; cursor: pointer;
+    text-decoration: none; transition: background 0.14s, transform 0.1s;
+    white-space: nowrap;
   }
-  .btn-perplexity:hover { background: #178f88; transform: scale(1.03); }
-  .btn-perplexity svg { width: 13px; height: 13px; }
+  .btn-p:hover { background: var(--teal-dk); transform: scale(1.03); }
+  .btn-p svg { width: 12px; height: 12px; flex-shrink: 0; }
 
-  /* Sector stripe colours */
-  .s-agritech  { background: #6b7c4b; }
-  .s-ai        { background: #8b4513; }
-  .s-ecommerce { background: #c1643c; }
-  .s-fintech   { background: #4a7c59; }
-  .s-enterprise{ background: #7a5545; }
-  .s-edtech    { background: #d4a017; }
-  .s-foodtech  { background: #b5451b; }
-  .s-cleantech { background: #4a8c6f; }
-  .s-hardware  { background: #5c7a8c; }
-
-  /* MODAL */
-  .overlay {
-    position: fixed; inset: 0; background: rgba(46,31,20,0.5);
-    backdrop-filter: blur(5px); z-index: 1000;
-    display: flex; align-items: center; justify-content: center; padding: 20px;
-    opacity: 0; pointer-events: none; transition: opacity 0.25s;
-  }
-  .overlay.open { opacity: 1; pointer-events: all; }
-  .modal {
-    background: var(--cream); border: 2px solid var(--terra); border-radius: 20px;
-    width: 100%; max-width: 640px; max-height: 88vh; overflow-y: auto;
-    transform: translateY(24px) scale(0.96); transition: transform 0.3s cubic-bezier(.22,.68,0,1.15);
-    position: relative;
-  }
-  .overlay.open .modal { transform: none; }
-  .modal-hd {
-    padding: 26px 28px 18px; border-bottom: 1.5px solid var(--border);
-    display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;
-    position: sticky; top: 0; background: var(--cream); z-index: 10; border-radius: 18px 18px 0 0;
-  }
-  .modal-name { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--soil); }
-  .modal-sub  { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terra); margin-top: 4px; }
-  .modal-x {
-    background: var(--parchment); border: 1.5px solid var(--border); width: 34px; height: 34px;
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    cursor: pointer; flex-shrink: 0; font-size: 20px; color: var(--muted); line-height: 1;
-    transition: background 0.15s;
-  }
-  .modal-x:hover { background: var(--terra); color: #fff; border-color: var(--terra); }
-  .modal-bd { padding: 24px 28px 20px; }
-  .modal-ft {
-    padding: 14px 28px 22px; border-top: 1px solid var(--border);
-    display: flex; justify-content: flex-end;
-  }
-
-  .loading { display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 44px 0; }
-  .spin {
-    width: 36px; height: 36px; border: 3px solid var(--border);
-    border-top-color: var(--terra); border-radius: 50%; animation: sp 0.8s linear infinite;
-  }
-  @keyframes sp { to { transform: rotate(360deg); } }
-  .load-txt { font-size: 13px; color: var(--muted); }
-
-  .msec { margin-bottom: 22px; }
-  .msec-ttl {
-    font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--terra); margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--sand);
-  }
-  .kv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; }
-  .kv-k { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
-  .kv-v { font-size: 14px; color: var(--soil); font-weight: 500; line-height: 1.4; }
-  .narrative { font-size: 13px; line-height: 1.8; color: var(--soil-lt); margin-bottom: 22px; }
-  .disclaimer {
-    font-size: 10px; color: var(--muted); background: var(--parchment);
-    border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px;
-    line-height: 1.6; margin-top: 18px;
-  }
-  .no-results { grid-column:1/-1; text-align:center; padding:80px 20px; color:var(--muted); font-size:14px; }
+  .no-results { grid-column:1/-1; text-align:center; padding:80px; color:var(--muted); font-size:14px; }
 </style>
 </head>
 <body>
 <div class="page">
   <header>
     <h1>Funding <em>Deals</em><br>March 2026</h1>
-    <div class="header-stats">
-      <div class="hstat"><div class="hstat-val">22</div><div class="hstat-label">Deals</div></div>
-      <div class="hstat"><div class="hstat-val">$246M+</div><div class="hstat-label">Raised</div></div>
-      <div class="hstat"><div class="hstat-val">9</div><div class="hstat-label">Sectors</div></div>
+    <div class="hstats">
+      <div class="hstat"><div class="hstat-v">22</div><div class="hstat-l">Deals</div></div>
+      <div class="hstat"><div class="hstat-v">$246M+</div><div class="hstat-l">Raised</div></div>
+      <div class="hstat"><div class="hstat-v">9</div><div class="hstat-l">Sectors</div></div>
     </div>
   </header>
 
   <div class="toolbar">
-    <div class="search-wrap">
+    <div class="sw">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       <input id="search" type="text" placeholder="Search company, sector, investor…" oninput="render()">
     </div>
-    <div class="filters" id="filters"></div>
+    <div class="pills" id="pills"></div>
   </div>
 
   <div class="count-row"><b id="cnt">22</b> deals shown</div>
   <div class="grid" id="grid"></div>
-</div>
-
-<!-- Modal -->
-<div class="overlay" id="overlay" onclick="maybeClose(event)">
-  <div class="modal">
-    <div class="modal-hd">
-      <div>
-        <div class="modal-name" id="m-name"></div>
-        <div class="modal-sub"  id="m-sub"></div>
-      </div>
-      <button class="modal-x" onclick="closeModal()">×</button>
-    </div>
-    <div class="modal-bd" id="m-body"></div>
-    <div class="modal-ft">
-      <a id="m-plex" class="btn-perplexity" href="#" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        Search on Perplexity
-      </a>
-    </div>
-  </div>
 </div>
 
 <script>
@@ -267,7 +195,7 @@ const deals = [
   {date:"2026-03-11",company:"Aditi Toys",sector:"Ecommerce",subsector:"D2C",model:"B2C",amount:"$3.9 Mn",stage:"–",investors:"GVFL"},
   {date:"2026-03-10",company:"Zoff Foods",sector:"Ecommerce",subsector:"D2C",model:"B2C",amount:"$2 Mn",stage:"Pre-Series B",investors:"JM Financial, Aman Gupta (boAt)"},
   {date:"2026-03-10",company:"Captain Fresh",sector:"Ecommerce",subsector:"B2B Ecommerce",model:"B2B",amount:"$31.4 Mn",stage:"Debt",investors:"Blue Earth Capital"},
-  {date:"2026-03-10",company:"Verdant Impact",sector:"Agritech",subsector:"Agri-Bio Tech",model:"B2C",amount:"$3 Mn",stage:"Seed",investors:"Unicorn India Ventures, Infynyte Club, Yash Kotak (Jumper.ai), Alok Soni (Mud House Capital), a-IDEA NAARM"},
+  {date:"2026-03-10",company:"Verdant Impact",sector:"Agritech",subsector:"Agri-Bio Tech",model:"B2C",amount:"$3 Mn",stage:"Seed",investors:"Unicorn India Ventures, Infynyte Club, Yash Kotak, a-IDEA NAARM"},
   {date:"2026-03-10",company:"Coreworks AI",sector:"AI",subsector:"Application Layer",model:"B2B",amount:"$5 Mn",stage:"Seed",investors:"Together Fund"},
   {date:"2026-03-10",company:"Newtrace",sector:"Cleantech",subsector:"Climate Tech",model:"B2B",amount:"$6.3 Mn",stage:"Pre-Series A",investors:"HDFC, Mitsui Sumitomo Insurance Venture Capital"},
   {date:"2026-03-10",company:"AquaExchange",sector:"Agritech",subsector:"Farmtech",model:"B2C",amount:"$8 Mn",stage:"Series B",investors:"Endiya Partners, Factor Analytics, Accion Ventures"},
@@ -278,25 +206,72 @@ const deals = [
 ];
 
 const stripeMap = {
-  "Agritech":"s-agritech","AI":"s-ai","Ecommerce":"s-ecommerce","Fintech":"s-fintech",
-  "Enterprise Tech":"s-enterprise","Enterprise Services":"s-enterprise",
-  "Edtech":"s-edtech","Foodtech":"s-foodtech","Cleantech":"s-cleantech",
-  "Advanced Hardware & Technology":"s-hardware"
+  "Agritech":"s-agri","AI":"s-ai","Ecommerce":"s-ecom","Fintech":"s-fin",
+  "Enterprise Tech":"s-ent","Enterprise Services":"s-ent",
+  "Edtech":"s-edu","Foodtech":"s-food","Cleantech":"s-clean",
+  "Advanced Hardware & Technology":"s-hw"
 };
 
-// Build filters
+// Sector pills
 const sectors = ['All',...[...new Set(deals.map(d=>d.sector))].sort()];
 let active = 'All';
-const fEl = document.getElementById('filters');
-sectors.forEach(s => {
+const pEl = document.getElementById('pills');
+sectors.forEach(s=>{
   const b = document.createElement('button');
-  b.className = 'pill'+(s==='All'?' active':'');
+  b.className='pill'+(s==='All'?' on':'');
   b.textContent = s==='Advanced Hardware & Technology'?'HardTech':s;
-  b.onclick = ()=>{ active=s; document.querySelectorAll('.pill').forEach(p=>p.classList.remove('active')); b.classList.add('active'); render(); };
-  fEl.appendChild(b);
+  b.onclick=()=>{ active=s; document.querySelectorAll('.pill').forEach(p=>p.classList.remove('on')); b.classList.add('on'); render(); };
+  pEl.appendChild(b);
 });
 
 function fmt(d){ return new Date(d).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}); }
+
+// Google URL — opens "company name India startup" search
+function googleUrl(company, sector){
+  const q = `${company} India startup ${sector} founder founded HQ valuation employees`;
+  return `https://www.google.com/search?q=${encodeURIComponent(q)}`;
+}
+
+// Perplexity URL with a rich structured prompt
+function perplexityUrl(d){
+  const prompt = `Give me a detailed company profile for "${d.company}", an Indian startup in the ${d.sector} sector (${d.subsector}, ${d.model} model) that recently raised ${d.amount} (${d.stage} round, investors: ${d.investors}).
+
+Please structure the answer clearly with the following sections:
+
+## 🏢 Company Overview
+- What does the company do? (2–3 sentences)
+- Website & domain
+
+## 👤 Founding
+- Year founded
+- Founder(s) name(s) and background
+
+## 📍 Headquarters
+- City and state in India
+
+## 📊 Scale & Traction
+- Number of employees
+- Number of customers / registered users
+- App downloads (if applicable)
+- Annual revenue (if known)
+- Valuation (latest known)
+
+## 🛍 Products & Services
+- Key products or services offered
+
+## 💰 Funding History
+- All known funding rounds with amounts and investors
+
+## ⚔️ Competition
+- 2–3 key competitors in India
+
+## 📰 Latest News
+- Any recent developments, product launches, or news
+
+Use actual data where available. If data is unavailable, clearly say so.`;
+
+  return `https://www.perplexity.ai/search?q=${encodeURIComponent(prompt)}`;
+}
 
 function render(){
   const q = document.getElementById('search').value.toLowerCase();
@@ -307,152 +282,45 @@ function render(){
     const mq = !q||[d.company,d.sector,d.subsector,d.investors,d.stage].join(' ').toLowerCase().includes(q);
     return ms&&mq;
   });
-  document.getElementById('cnt').textContent = list.length;
-  if(!list.length){ grid.innerHTML='<div class="no-results">No deals match your filters.</div>'; return; }
+  document.getElementById('cnt').textContent=list.length;
+  if(!list.length){grid.innerHTML='<div class="no-results">No deals match your filters.</div>';return;}
   list.forEach((d,i)=>{
-    const card = document.createElement('div');
+    const card=document.createElement('div');
     card.className='card'; card.style.animationDelay=(i*0.04)+'s';
-    const purl=`https://www.perplexity.ai/search?q=${encodeURIComponent(d.company+' Indian startup')}`;
-    const sc=stripeMap[d.sector]||'s-agritech';
+    const sc=stripeMap[d.sector]||'s-ent';
     card.innerHTML=`
-      <div class="card-stripe ${sc}"></div>
-      <div class="card-body">
-        <div class="card-top">
-          <div class="company-name">${d.company}</div>
-          ${d.amount!=='–'?`<div class="amount-chip">${d.amount}</div>`:''}
+      <div class="stripe ${sc}"></div>
+      <div class="cbody">
+        <div class="ctop">
+          <div class="cname">${d.company}</div>
+          ${d.amount!=='–'?`<div class="chip">${d.amount}</div>`:''}
         </div>
         <div class="tags">
-          <span class="tag tag-sector">${d.sector}</span>
-          ${d.stage!=='–'?`<span class="tag tag-stage">${d.stage}</span>`:''}
-          <span class="tag tag-model">${d.model}</span>
+          <span class="tag t-sec">${d.sector}</span>
+          ${d.stage!=='–'?`<span class="tag t-stg">${d.stage}</span>`:''}
+          <span class="tag t-mod">${d.model}</span>
         </div>
-        <div class="info-grid">
-          <div><div class="ig-key">Sub-sector</div><div class="ig-val">${d.subsector}</div></div>
-          <div><div class="ig-key">Model</div><div class="ig-val">${d.model}</div></div>
+        <div class="igrid">
+          <div><div class="ik">Sub-sector</div><div class="iv">${d.subsector}</div></div>
+          <div><div class="ik">Model</div><div class="iv">${d.model}</div></div>
         </div>
-        ${d.investors!=='–'?`<div class="investors-row"><div class="inv-label">Investors</div><div class="inv-names">${d.investors}</div></div>`:''}
+        ${d.investors!=='–'?`<div class="inv-l">Investors</div><div class="inv-v">${d.investors}</div>`:''}
       </div>
-      <div class="card-footer">
-        <div class="date-badge">${fmt(d.date)}</div>
-        <div class="actions">
-          <button class="btn-info" onclick='openInfo(${JSON.stringify(d).replace(/'/g,"&apos;")})'>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-            Company Info
-          </button>
-          <a class="btn-perplexity" href="${purl}" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-            Perplexity
+      <div class="cfoot">
+        <div class="date">${fmt(d.date)}</div>
+        <div class="btns">
+          <a class="btn-g" href="${googleUrl(d.company,d.sector)}" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.35 11.1H12.18V13.83H18.69C18.36 17.64 15.19 19.27 12.19 19.27C8.36 19.27 5 16.25 5 12C5 7.9 8.2 4.73 12.19 4.73C15.29 4.73 17.1 6.7 17.1 6.7L19 4.72C19 4.72 16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12C2.03 17.05 6.16 22 12.25 22C17.6 22 21.5 18.33 21.5 12.91C21.5 11.76 21.35 11.1 21.35 11.1Z"/></svg>
+            Google
+          </a>
+          <a class="btn-p" href="${perplexityUrl(d)}" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            Deep Research
           </a>
         </div>
       </div>`;
     grid.appendChild(card);
   });
-}
-
-function openModal(){ document.getElementById('overlay').classList.add('open'); document.body.style.overflow='hidden'; }
-function closeModal(){ document.getElementById('overlay').classList.remove('open'); document.body.style.overflow=''; }
-function maybeClose(e){ if(e.target===document.getElementById('overlay')) closeModal(); }
-
-async function openInfo(d){
-  document.getElementById('m-name').textContent = d.company;
-  document.getElementById('m-sub').textContent  = d.sector+(d.subsector!=='–'?' · '+d.subsector:'');
-  document.getElementById('m-plex').href = `https://www.perplexity.ai/search?q=${encodeURIComponent(d.company+' Indian startup')}`;
-  document.getElementById('m-body').innerHTML = `
-    <div class="loading">
-      <div class="spin"></div>
-      <div class="load-txt">Researching ${d.company}…</div>
-    </div>`;
-  openModal();
-
-  try {
-    const prompt = `You are a startup research assistant with deep knowledge of Indian startups. Provide detailed information about the Indian company "${d.company}" in the "${d.sector}" sector (sub-sector: "${d.subsector}", model: "${d.model}").
-
-Return ONLY a valid JSON object with these exact keys (use "N/A" if unknown, never leave empty):
-{
-  "founded": "year or approximate year founded",
-  "founders": "founder name(s), comma separated",
-  "hq": "city, state",
-  "website": "domain only e.g. example.com",
-  "description": "2-3 sentence description of what this company does and its value proposition",
-  "employees": "approximate employee count or range like 50-100",
-  "valuation": "latest known valuation in USD or INR, or N/A",
-  "customers": "approximate paying customers or registered users if known",
-  "downloads": "app/platform downloads if relevant, else N/A",
-  "revenue": "approximate annual revenue if publicly known, else N/A",
-  "keyProducts": "main products or services, comma separated",
-  "competitors": "2-3 key competitors in India",
-  "status": "active / acquired / shutdown"
-}
-Return ONLY valid JSON. No markdown, no explanation, no backticks.`;
-
-    const res = await fetch("https://api.anthropic.com/v1/messages",{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({
-        model:"claude-sonnet-4-20250514",
-        max_tokens:1000,
-        messages:[{role:"user",content:prompt}]
-      })
-    });
-    const data = await res.json();
-    const raw = data.content.map(c=>c.text||'').join('').trim().replace(/^```json|^```|```$/g,'').trim();
-    const info = JSON.parse(raw);
-
-    const link = info.website&&info.website!=='N/A'
-      ? `<a href="https://${info.website.replace(/^https?:\/\//,'')}" target="_blank" style="color:var(--terra);text-decoration:none;font-weight:600">${info.website}</a>`
-      : 'N/A';
-
-    document.getElementById('m-body').innerHTML = `
-      <p class="narrative">${info.description}</p>
-
-      <div class="msec">
-        <div class="msec-ttl">Founding & Identity</div>
-        <div class="kv-grid">
-          <div><div class="kv-k">Founded</div><div class="kv-v">${info.founded}</div></div>
-          <div><div class="kv-k">Founders</div><div class="kv-v">${info.founders}</div></div>
-          <div><div class="kv-k">Headquarters</div><div class="kv-v">${info.hq}</div></div>
-          <div><div class="kv-k">Website</div><div class="kv-v">${link}</div></div>
-        </div>
-      </div>
-
-      <div class="msec">
-        <div class="msec-ttl">Scale & Traction</div>
-        <div class="kv-grid">
-          <div><div class="kv-k">Employees</div><div class="kv-v">${info.employees}</div></div>
-          <div><div class="kv-k">Valuation</div><div class="kv-v">${info.valuation}</div></div>
-          <div><div class="kv-k">Customers / Users</div><div class="kv-v">${info.customers}</div></div>
-          <div><div class="kv-k">App Downloads</div><div class="kv-v">${info.downloads}</div></div>
-          <div><div class="kv-k">Revenue (Est.)</div><div class="kv-v">${info.revenue}</div></div>
-          <div><div class="kv-k">Status</div><div class="kv-v">${info.status}</div></div>
-        </div>
-      </div>
-
-      <div class="msec">
-        <div class="msec-ttl">Products & Services</div>
-        <div class="kv-v" style="font-size:13px;line-height:1.7">${info.keyProducts}</div>
-      </div>
-
-      <div class="msec">
-        <div class="msec-ttl">Competition</div>
-        <div class="kv-v" style="font-size:13px;line-height:1.7">${info.competitors}</div>
-      </div>
-
-      <div class="msec">
-        <div class="msec-ttl">This Funding Round</div>
-        <div class="kv-grid">
-          <div><div class="kv-k">Amount</div><div class="kv-v">${d.amount}</div></div>
-          <div><div class="kv-k">Stage</div><div class="kv-v">${d.stage}</div></div>
-          <div><div class="kv-k">Lead Investor</div><div class="kv-v">${d.investors.split(',')[0]||'–'}</div></div>
-          <div><div class="kv-k">Date</div><div class="kv-v">${fmt(d.date)}</div></div>
-        </div>
-      </div>
-
-      <div class="disclaimer">⚠️ Company information is AI-generated from training data and may not be fully accurate or current. Verify critical details from official sources before making investment decisions.</div>`;
-  } catch(err){
-    document.getElementById('m-body').innerHTML = `
-      <p style="color:var(--muted);font-size:13px;padding:20px 0 10px">Could not load company information. Please try searching on Perplexity instead.</p>
-      <div class="disclaimer">The AI service may be temporarily unavailable or the company may not have enough public data.</div>`;
-  }
 }
 
 render();
